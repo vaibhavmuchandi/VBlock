@@ -1,0 +1,449 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "HLF Vehicle Lifecycle Tracker",
+        "contact": {
+            "email": ""
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/vlm",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/createCar": {
+            "post": {
+                "summary": "Create Car",
+                "description": "Craete Car",
+                "operationId": "createCar",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Car object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Car"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/transferCar": {
+            "post": {
+                "summary": "Transfer Ownership",
+                "description": "Tansfer Ownership",
+                "operationId": "transferCar",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Transfer object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Transfer"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/sellnRegisterCar": {
+            "post": {
+                "summary": "Sell and register",
+                "description": "Registers the number",
+                "operationId": "sellnRegister",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Register object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/SellRegis"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/scrapCar": {
+            "post": {
+                "summary": "Scrap Car",
+                "description": "Scrap Car",
+                "operationId": "scrapCar",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Scrap object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Scrap"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/Scrap"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/getCar": {
+            "post": {
+                "summary": "Discription of the car",
+                "description": "Get Car",
+                "operationId": "getCar",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "chasisNo",
+                    "description": "Car object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Scrap"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/getCarHistory": {
+            "post": {
+                "summary": "History of the Car",
+                "description": "Get Car History",
+                "operationId": "getCarHistory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "chasisNo",
+                    "description": "Car object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Scrap"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/definitions/Car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/getCarByNumber": {
+            "post": {
+                "summary": "Get Car Details by Number",
+                "description": "Get Car details by number",
+                "operationId": "getCar",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "RegistrationNo",
+                    "description": "Car object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/GetCarByNumber"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/Car"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/issueChallan": {
+            "post": {
+                "summary": "Issue Car Challan",
+                "description": "Issue",
+                "operationId": "issueChallan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Register object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/IssueCarChallan"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/payChallan": {
+            "post": {
+                "summary": "Pay Car Challan",
+                "description": "Pay",
+                "operationId": "payChallan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Register object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/PayCarChallan"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/registerClaim": {
+            "post": {
+                "summary": "Register Claim",
+                "description": "register Insurance Claim",
+                "operationId": "registerClaim",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Register object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/RegisterClaim"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/payCarLoan": {
+            "post": {
+                "summary": "Pay Car Loan",
+                "description": "Pay Loan",
+                "operationId": "parCarLoan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Register object",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/PayCarLoan"
+                    }
+                }],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Car": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                }
+            }
+        },
+        "Transfer": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "New Owner"
+                }
+            }
+        },
+        "SellRegis": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "New Owner"
+                },
+                "registrationNo": {
+                    "type": "string",
+                    "description": "Regis No"
+                },
+                "registrationExpDae": {
+                    "type": "string",
+                    "description": "Regis Exp Date"
+                },
+                "loanAmount": {
+                    "type": "string",
+                    "description": "loan taken"
+                }
+            }
+        },
+        "Scrap": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string"
+                }
+            }
+        },
+        "GetCarByNumber": {
+            "type": "object",
+            "properties": {
+                "registrationNo": {
+                    "type": "string"
+                }
+            }
+        },
+        "IssueCarChallan": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "Amount to pay"
+                }
+            }
+        },
+        "PayCarChallan": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "Amount paid"
+                }
+            }
+        },
+        "RegisterClaim": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                }
+            }
+        },
+        "PayCarLoan": {
+            "type": "object",
+            "properties": {
+                "chasisNo": {
+                    "type": "string",
+                    "description": "Chasis No"
+                }
+            }
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
